@@ -1,0 +1,14 @@
+[user]
+	name = kfwu
+	email = kfwu0508@gmail.com
+[core]
+	editor = nvim
+[alias]
+	st = status
+    ci = commit
+    br = branch
+    co = checkout
+    cp = cherry-pick
+    l = log --oneline --graph
+	ls = log --graph --pretty=format:\"%h <%an> %ar %s\"
+	la = log --graph --decorate --pretty=oneline --abbrev-commit --all
