@@ -21,6 +21,7 @@ vim.opt.wrap = false
 -- line number
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
 
 -- indent
 vim.opt.tabstop     = 4
