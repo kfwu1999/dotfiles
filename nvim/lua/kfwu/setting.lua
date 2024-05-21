@@ -41,3 +41,11 @@ vim.opt.incsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
+
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.opt_local.wrap = true
+    end
+})
