@@ -100,4 +100,15 @@ return require('packer').startup(function(use)
 
     -- Start Page
     use({"mhinz/vim-startify"})
+
+    -- Obsidian
+    use({
+        "epwalsh/obsidian.nvim",
+        tag = "*", -- recommended, use latest release instead of latest commit
+        requires = {
+            -- Required.
+            "nvim-lua/plenary.nvim",
+        },
+    })
+
 end)
