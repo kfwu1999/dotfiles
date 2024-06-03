@@ -53,7 +53,15 @@ require("obsidian").setup({
     vim.api.nvim_create_user_command('ObNew', 'ObsidianNew', {}),
     vim.api.nvim_create_user_command('ObTags', 'ObsidianTags', {}),
     vim.api.nvim_create_user_command('ObOpen', 'ObsidianOpen', {}),
-    vim.api.nvim_create_user_command('ObRename', 'ObsidianRename', {}),
     vim.api.nvim_create_user_command('ObTemplate', 'ObsidianTemplate', {}),
-    vim.api.nvim_create_user_command('ObBacklinks', 'ObsidianBacklinks', {})
+    vim.api.nvim_create_user_command('ObBacklinks', 'ObsidianBacklinks', {}),
+
+    -- 
+    vim.keymap.set("n", "<leader>oo", ":ObsidianOpen<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>of", ":ObsidianQuickSwitch<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>os", ":ObsidianSearch<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>og", ":ObsidianTags<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>ot", ":ObsidianTemplate<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { silent = true }),
+    vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { silent = true })
 })

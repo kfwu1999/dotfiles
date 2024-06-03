@@ -51,4 +51,5 @@ require("todo-comments").setup({
         pattern = [[\b(KEYWORDS):]], -- ripgrep regex
         -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
     },
+    vim.keymap.set("n", "<leader>pt", ":TodoTelescope<CR>", { silent = true })
 })
