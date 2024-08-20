@@ -43,8 +43,9 @@ vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 
 
+-- wrap line for specific file type
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
+    pattern = { "markdown", "tex" },
     callback = function()
         vim.opt_local.wrap = true
     end
