@@ -10,7 +10,6 @@ require('nvim-treesitter.configs').setup({
       "rust",
       "lua",
       "markdown",
-      "latex",
       "bash",
   },
 

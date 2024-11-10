@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
-
 --- Basic Setting --------------------------------------------------------------
 -- Move Line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -18,22 +17,21 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- Yank in system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])   --- yank in system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) --- yank in system clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]])
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])   --- but into system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) --- but into system clipboard
 vim.keymap.set("n", "<leader>D", [["+D]])
 
 -- Cancel
 vim.keymap.set("n", "Q", "<nop>")
 
--- 
+--
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Dirs
-vim.keymap.set("n", "<leader>cf", ":let @+ = expand('%')<CR>")       -- relative path: src/filename
-vim.keymap.set("n", "<leader>cF", ":let @+ = expand('%:p')<CR>")     -- absolute path: /dir/src/filename
-vim.keymap.set("n", "<leader>cd", ":let @+ = expand('%:p:h')<CR>")   -- directory name: /dir/src
-
+vim.keymap.set("n", "<leader>cf", ":let @+ = expand('%')<CR>") -- relative path: src/filename
+vim.keymap.set("n", "<leader>cF", ":let @+ = expand('%:p')<CR>") -- absolute path: /dir/src/filename
+vim.keymap.set("n", "<leader>cd", ":let @+ = expand('%:p:h')<CR>") -- directory name: /dir/src
 
 -- Windows
 vim.keymap.set("n", "ss", ":split<Return><C-w>w", { silent = true })

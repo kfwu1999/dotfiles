@@ -4,12 +4,7 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
 
-    -- Theme
-    use({
-        "luisiacc/gruvbox-baby",
-        as = 'gruvbox-baby',
-    })
-
+    -- Essentials --------------------------------------------------------------
     -- Telescope
     use({
         'nvim-telescope/telescope.nvim',
@@ -24,19 +19,69 @@ return require('packer').startup(function(use)
     -- Harpoon
     use({'theprimeagen/harpoon'})
 
-
-    -- golang
-    -- use({"ray-x/go.nvim"})
-    -- use({"ray-x/guihua.lua"})
-
-    -- Undo-tree
-    use({'mbbill/undotree'})
+    -- Comment
+    use({'numToStr/Comment.nvim'})
 
     -- Git
     use({'tpope/vim-fugitive'})
     use({'tpope/vim-rhubarb'})
 
-    -- LSP
+    -- Gitsigns
+    use({
+        'lewis6991/gitsigns.nvim',
+        as = 'gitsigns',
+        requires = {"nvim-lua/plenary.nvim"},
+    })
+
+    -- lazygit
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
+
+    -- TODO
+    use({
+        "folke/todo-comments.nvim",
+        requires = {"nvim-lua/plenary.nvim"},
+    })
+
+
+    -- Appearance --------------------------------------------------------------
+    -- Theme
+    use({
+        "luisiacc/gruvbox-baby",
+        as = 'gruvbox-baby',
+    })
+
+    -- Lualine
+    use({
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+        }
+    })
+
+    -- Tagbar
+    use({"preservim/tagbar"})
+
+    -- Start Page
+    use({"mhinz/vim-startify"})
+
+    -- noice
+    use({
+        "folke/noice.nvim",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    })
+
+
+    -- Optional ----------------------------------------------------------------
+    -- LSP (hard to install)
     use({
         'VonHeikemen/lsp-zero.nvim',
         requires = {
@@ -59,48 +104,6 @@ return require('packer').startup(function(use)
         }
     })
 
-    -- Lualine
-    use({
-        'nvim-lualine/lualine.nvim',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-        }
-    })
-
-    -- Comment
-    use({'numToStr/Comment.nvim'})
-
-    -- Gitsigns
-    use({
-        'lewis6991/gitsigns.nvim',
-        as = 'gitsigns',
-        requires = {"nvim-lua/plenary.nvim"},
-    })
-
-    -- lazygit
-    use({
-        "kdheepak/lazygit.nvim",
-        -- optional for floating window border decoration
-        requires = {
-            "nvim-lua/plenary.nvim",
-        },
-    })
-
-    -- rainbow
-    -- use({"p00f/nvim-ts-rainbow"})
-
-    -- Tagbar
-    use({"preservim/tagbar"})
-
-    -- TODO
-    use({
-        "folke/todo-comments.nvim",
-        requires = {"nvim-lua/plenary.nvim"},
-    })
-
-    -- Start Page
-    use({"mhinz/vim-startify"})
-
     -- Obsidian
     use({
         "epwalsh/obsidian.nvim",
@@ -109,16 +112,6 @@ return require('packer').startup(function(use)
             -- Required.
             "nvim-lua/plenary.nvim",
         },
-    })
-
-
-    -- noice
-    use({
-        "folke/noice.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        }
     })
 
 
