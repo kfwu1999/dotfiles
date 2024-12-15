@@ -41,20 +41,39 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     sudo apt install fuse libfuse2
     ```
 
-1. Download the AppImage (v0.9+ is needed for [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim))
-    - [Neovim releases](https://github.com/neovim/neovim/releases)
+1. Install neovim (v0.9+ is needed for [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim))
+    - Download `nvim-linux64.tar.gz` from [Neovim releases](https://github.com/neovim/neovim/releases)
 
-2. Make the AppImage executable
-    ```
-    chmod u+x nvim.appimage
-    ```
+    - Extract
+        ```sh
+        tar xzvf nvim-linux64.tar.gz
+        ```
 
-3. Move Neovim to system path
-    ```
-    sudo mv nvim.appimage /usr/local/bin/nvim
-    ```
-    
-4. Install [packer](https://github.com/wbthomason/packer.nvim) for package management
+    - Move the Folder to a Standard Location
+        ```sh
+        # User-specific (preferred for non-root users)
+        mv ~/Downloads/nvim-linux64 ~/.local/share/nvim-linux64
+
+        # OR for system-wide (requires root permissions)
+        sudo mv ~/Downloads/nvim-linux64 /opt/nvim
+        ```
+
+    - Create a Symlink to the Binary
+        ```sh
+        # User-specific (preferred for non-root users)
+        mv ~/Downloads/nvim-linux64 ~/.local/share/nvim-linux64
+
+        # OR for system-wide (requires root permissions)
+        sudo mv ~/Downloads/nvim-linux64 /opt/nvim
+        ```
+
+    - Verify the Installation
+        ```sh
+        which nvim
+        nvim --version
+        ```
+
+2. Install [packer](https://github.com/wbthomason/packer.nvim) for package management
     ```
     git clone --depth 1 https://github.com/wbthomason/packer.nvim\
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
