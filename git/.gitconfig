@@ -9,6 +9,6 @@
     br = branch
     co = checkout
     cp = cherry-pick
-    l = log --oneline --graph
-    ls = log --graph --pretty=format:\"%h <%an> %ar %s\"
-    la = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    l  = log --oneline --decorate
+    ll = log --graph   --decorate
+    la = log --graph   --decorate --pretty=oneline --abbrev-commit --all
