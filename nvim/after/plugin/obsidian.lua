@@ -65,3 +65,4 @@ require("obsidian").setup({
     vim.keymap.set("n", "<leader>on", ":ObsidianNew<CR>", { silent = true }),
     vim.keymap.set("n", "<leader>ob", ":ObsidianBacklinks<CR>", { silent = true })
 })
+

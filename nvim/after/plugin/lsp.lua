@@ -43,17 +43,6 @@ cmp.setup({
 })
 
 
--- lsp.set_preferences({
---     suggest_lsp_servers = false,
---     sign_icons = {
---         error = 'E',
---         warn = 'W',
---         hint = 'H',
---         info = 'I'
---     }
--- })
-
-
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
@@ -78,7 +67,8 @@ end)
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
+    signs = true,
     float = {
         focusable = false,
         style = "minimal",

@@ -48,13 +48,21 @@ return require('packer').startup(function(use)
         requires = {"nvim-lua/plenary.nvim"},
     })
 
+    -- Terminal
+    use({
+        "akinsho/toggleterm.nvim",
+        tag = "*",
+        config = function()
+            require("toggleterm").setup()
+        end
+    })
+
 
     -- Appearance --------------------------------------------------------------
     -- Theme
-    use({
-        "luisiacc/gruvbox-baby",
-        as = 'gruvbox-baby',
-    })
+    -- use({"luisiacc/gruvbox-baby"})
+    -- use({"ellisonleao/gruvbox.nvim"})
+    use 'sainnhe/gruvbox-material'
 
     -- Lualine
     use({
@@ -114,5 +122,8 @@ return require('packer').startup(function(use)
         },
     })
 
+    -- golang
+    -- use({"ray-x/go.nvim"})
+    -- use({"ray-x/guihua.lua"})
 
 end)

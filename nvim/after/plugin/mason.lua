@@ -1,12 +1,12 @@
 require("mason").setup()
--- require("mason-lspconfig").setup({
---     ensure_installed = {
---         'clangd',
---         'rust_analyzer',
---         'texlab',
---         'lua-language-server'
---     },
--- })
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        'clangd',
+        'rust_analyzer',
+        'texlab',
+        'lua-language-server'
+    },
+})
 require("mason-lspconfig").setup({
     ensure_installed = {
         "lua_ls",            -- Correct name for Lua language server
