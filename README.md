@@ -83,4 +83,18 @@ sudo apt install zsh
 
 
 ## Setup
-- TODO
+
+Use `deploy.sh` to symlink configs into place:
+
+```sh
+# Deploy everything
+./deploy.sh
+
+# Deploy a specific target
+./deploy.sh nvim
+./deploy.sh tmux
+./deploy.sh git
+./deploy.sh zsh
+```
+
+The script backs up any existing files (e.g. `~/.gitconfig` → `~/.gitconfig.bak`) before creating symlinks.
