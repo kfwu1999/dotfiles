@@ -73,11 +73,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
         nvim --version
         ```
 
-2. Install [packer](https://github.com/wbthomason/packer.nvim) for package management
-    ```
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-    ```
+2. Plugin management is handled automatically by [lazy.nvim](https://github.com/folke/lazy.nvim), which will self-install on first Neovim launch. No manual setup needed.
 
 ### zsh installation
 #### Ubuntu
