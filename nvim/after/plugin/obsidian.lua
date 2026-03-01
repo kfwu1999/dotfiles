@@ -1,8 +1,17 @@
 require("obsidian").setup({
     workspaces = {
         {
-            name = "personal",
-            path = "~/Documents/Obsidian/kfwu" },
+            name = "dev",
+            path = "~/Documents/Obsidian/kfwu"
+        },
+        {
+            name = "fin",
+            path = "~/Documents/Obsidian/financial-research-vault"
+        },
+        {
+            name = "zettelkasten",
+            path = "~/Documents/Obsidian/zettelkasten"
+        },
     },
     ui = {
         enable = false,
@@ -10,9 +19,6 @@ require("obsidian").setup({
     },
     picker = {
         name = "telescope.nvim",
-    },
-    templates = {
-        folder = "4-Extra/Templates",
     },
     -- Customize how note IDs are generated given an optional title.
     ---@param title string|?
