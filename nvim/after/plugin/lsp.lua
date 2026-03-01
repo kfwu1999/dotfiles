@@ -1,51 +1,11 @@
 local lsp = require("lsp-zero")
 
--- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
--- Avoid automatially adding header files in c++ clangd
-vim.cmd [[
-    let g:ycm_clangd_args=['--header-insertion=never']
-]]
-
-
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-
-cmp.setup({
-    snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        end,
-    },
-    mapping = cmp.mapping.preset.insert({
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ["<C-Enter>"] = cmp.mapping.complete(),
-        ['<Tab>'] = nil,
-        ['<S-Tab>'] = nil,
-    }),
-    sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
-    }, {
-        { name = 'buffer' },
-    })
-})
-
-
+-- 1. Use the modern lsp-zero v3/v4 approach
+-- This tells lsp-zero to use the built-in vim.lsp.config where possible
 lsp.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
+    -- Disable eslint if you don't want it
     if client.name == "eslint" then
         vim.cmd.LspStop('eslint')
         return
@@ -61,11 +21,60 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
     vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
 end)
 
-lsp.setup()
+-- 2. Setup Mason and handlers (The modern way to configure specific servers)
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    handlers = {
+        lsp.default_setup,
+        -- Custom config for lua_ls
+        lua_ls = function()
+            require('lspconfig').lua_ls.setup({
+                settings = {
+                    Lua = {
+                        diagnostics = { globals = { 'vim' } }
+                    }
+                }
+            })
+        end,
+        -- Proper way to disable header insertion for clangd
+        clangd = function()
+            require('lspconfig').clangd.setup({
+                cmd = {
+                    "clangd",
+                    "--header-insertion=never",
+                }
+            })
+        end,
+    }
+})
 
+-- 3. nvim-cmp setup (Your existing logic)
+local cmp = require('cmp')
+local cmp_select = {behavior = cmp.SelectBehavior.Select}
+
+cmp.setup({
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+        ["<C-Space>"] = cmp.mapping.complete(), -- Changed from C-Enter as it's more standard
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    }, {
+        { name = 'buffer' },
+    })
+})
+
+-- 4. Global Diagnostic Config
 vim.diagnostic.config({
     virtual_text = false,
     signs = true,

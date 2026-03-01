@@ -112,6 +112,12 @@ return require('packer').startup(function(use)
         }
     })
 
+    use {
+      "folke/lazydev.nvim",
+      ft = "lua", -- only load on lua files
+      opts = {}
+    }
+
     -- Obsidian
     use({
         "epwalsh/obsidian.nvim",
