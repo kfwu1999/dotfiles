@@ -56,3 +56,7 @@ vim.keymap.set("n", "sl", "<C-w>l")
 vim.keymap.set("n", "sq", "<C-w>q")
 vim.keymap.set("n", "sr", "<C-w>r")
 vim.keymap.set("n", "so", "<C-w>o")
+
+-- Undotree (built-in since 0.12)
+vim.cmd.packadd("nvim.undotree")
+vim.keymap.set("n", "<leader>u", vim.cmd.Undotree)
