@@ -32,6 +32,11 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     sudo apt install fd-find
     ```
 
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) 0.26.1+ and a C compiler (needed by nvim-treesitter to build parsers; the apt package is too old)
+    ```
+    cargo install --locked tree-sitter-cli
+    ```
+
 
 ### Neovim installation
 #### Ubuntu
@@ -41,7 +46,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     sudo apt install fuse libfuse2
     ```
 
-1. Install neovim (v0.9+ is needed for [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim))
+1. Install neovim (v0.12+ is required by this config)
     - Download `nvim-linux64.tar.gz` from [Neovim releases](https://github.com/neovim/neovim/releases)
 
     - Extract

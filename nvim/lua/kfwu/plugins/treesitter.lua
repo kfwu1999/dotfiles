@@ -1,28 +1,41 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        lazy = false, -- main branch does not support lazy-loading
         build = ":TSUpdate",
         config = function()
-            require("nvim-treesitter").setup({
-                ensure_installed = {
-                    "c",
-                    "cpp",
-                    "cmake",
-                    "make",
-                    "python",
-                    "go",
-                    "rust",
-                    "lua",
-                    "markdown",
-                    "bash",
-                },
-                sync_install = false,
-                auto_install = true,
+            local ts = require("nvim-treesitter")
+            -- no-op for parsers already installed; needs tree-sitter-cli
+            ts.install({
+                "c",
+                "cpp",
+                "cmake",
+                "make",
+                "python",
+                "go",
+                "rust",
+                "lua",
+                "markdown",
+                "bash",
             })
-            -- Enable treesitter highlighting for all filetypes
+
+            -- start highlighting, installing the parser first if missing
+            local available = ts.get_available()
             vim.api.nvim_create_autocmd("FileType", {
-                callback = function()
-                    pcall(vim.treesitter.start)
+                callback = function(args)
+                    local lang = vim.treesitter.language.get_lang(args.match)
+                    if not lang then
+                        return
+                    end
+                    if vim.treesitter.language.add(lang) then
+                        vim.treesitter.start(args.buf, lang)
+                    elseif vim.tbl_contains(available, lang) then
+                        ts.install(lang):await(function()
+                            if vim.api.nvim_buf_is_valid(args.buf) then
+                                pcall(vim.treesitter.start, args.buf, lang)
+                            end
+                        end)
+                    end
                 end,
             })
         end,

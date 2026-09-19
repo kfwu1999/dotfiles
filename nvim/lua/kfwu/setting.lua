@@ -10,7 +10,7 @@ vim.opt.termguicolors = true
 -- system
 vim.opt.clipboard = "unnamedplus"
 vim.opt.errorbells = false
-vim.opt.fileencodings = "utf-i"
+vim.opt.fileencodings = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.showcmd = true
 vim.opt.cmdheight = 1
