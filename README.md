@@ -35,6 +35,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ### Neovim
 See [docs/nvim.md](docs/nvim.md) for requirements, installation, and updating an existing machine.
+Keymaps are listed in [docs/keymaps.md](docs/keymaps.md).
 
 ### zsh installation
 #### Ubuntu

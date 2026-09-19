@@ -45,6 +45,8 @@ Removed plugins: lsp-zero, nvim-cmp (and its sources), Comment.nvim, undotree.
 LSP now uses the built-in `vim.lsp.config`/`vim.lsp.enable`, and completion
 uses blink.cmp.
 
+New and changed keymaps (full list in [keymaps.md](keymaps.md)):
+
 | Key / command | Action |
 | --- | --- |
 | `[d` / `]d` | Previous / next diagnostic (Neovim default; previously swapped) |
