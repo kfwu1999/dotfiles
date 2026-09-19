@@ -32,53 +32,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     sudo apt install fd-find
     ```
 
-- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) 0.26.1+ and a C compiler (needed by nvim-treesitter to build parsers; the apt package is too old)
-    ```
-    cargo install --locked tree-sitter-cli
-    ```
 
-
-### Neovim installation
-#### Ubuntu
-0. Prerequisites
-    ```sh
-    sudo apt update
-    sudo apt install fuse libfuse2
-    ```
-
-1. Install neovim (v0.12+ is required by this config)
-    - Download `nvim-linux64.tar.gz` from [Neovim releases](https://github.com/neovim/neovim/releases)
-
-    - Extract
-        ```sh
-        tar xzvf nvim-linux64.tar.gz
-        ```
-
-    - Move the Folder to a Standard Location
-        ```sh
-        # User-specific (preferred for non-root users)
-        mv ~/Downloads/nvim-linux64 ~/.local/share/nvim-linux64
-
-        # OR for system-wide (requires root permissions)
-        sudo mv ~/Downloads/nvim-linux64 /opt/nvim
-        ```
-
-    - Create a Symlink to the Binary
-        ```sh
-        # User-specific (preferred for non-root users)
-        mv ~/Downloads/nvim-linux64 ~/.local/share/nvim-linux64
-
-        # OR for system-wide (requires root permissions)
-        sudo mv ~/Downloads/nvim-linux64 /opt/nvim
-        ```
-
-    - Verify the Installation
-        ```sh
-        which nvim
-        nvim --version
-        ```
-
-2. Plugin management is handled automatically by [lazy.nvim](https://github.com/folke/lazy.nvim), which will self-install on first Neovim launch. No manual setup needed.
+### Neovim
+See [docs/nvim.md](docs/nvim.md) for requirements, installation, and updating an existing machine.
 
 ### zsh installation
 #### Ubuntu
