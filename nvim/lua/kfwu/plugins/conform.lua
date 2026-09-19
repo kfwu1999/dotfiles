@@ -6,6 +6,11 @@ return {
         { "<leader>tf", "<cmd>FormatToggle<CR>", desc = "Toggle format on save" },
     },
     config = function()
+        -- format on save is off by default; <leader>tf turns it on
+        if vim.g.disable_autoformat == nil then
+            vim.g.disable_autoformat = true
+        end
+
         require("conform").setup({
             formatters_by_ft = {
                 -- never fall back to clangd: it would apply LLVM style too

@@ -6,7 +6,7 @@
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) **0.26.1+** (not from npm; distro packages are often too old)
 - A C compiler, `curl`, `tar`, `git` (nvim-treesitter builds parsers)
 - [ripgrep](https://github.com/BurntSushi/ripgrep) (telescope, grug-far, todo-comments)
-- Optional formatters, used on save when found: `clang-format`, `rustfmt`, `gofmt`
+- Optional formatters, used on save (when enabled) if found: `clang-format`, `rustfmt`, `gofmt`
 
 ## Fresh install
 
@@ -60,6 +60,8 @@ New and changed keymaps (full list in [keymaps.md](keymaps.md)):
 | `<leader>tf` | Toggle format on save (`:FormatToggle`, `:FormatToggle!` per buffer) |
 
 ### Format on save
+
+Off by default; turn it on with `<leader>tf` (`:FormatToggle`). When on:
 
 - C/C++: only in projects with a `.clang-format` / `_clang-format`; otherwise
   nothing is formatted.
