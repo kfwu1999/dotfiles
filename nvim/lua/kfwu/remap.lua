@@ -32,6 +32,19 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("n", "<leader>cf", ":let @+ = expand('%')<CR>") -- relative path: src/filename
 vim.keymap.set("n", "<leader>cF", ":let @+ = expand('%:p')<CR>") -- absolute path: /dir/src/filename
 vim.keymap.set("n", "<leader>cd", ":let @+ = expand('%:p:h')<CR>") -- directory name: /dir/src
+vim.keymap.set("n", "<leader>cl", function() -- file:line: src/filename:42
+    local loc = vim.fn.expand("%:.") .. ":" .. vim.fn.line(".")
+    vim.fn.setreg("+", loc)
+    vim.notify(loc)
+end)
+vim.keymap.set("v", "<leader>cl", function() -- file:range: src/filename:10-20
+    local s, e = vim.fn.line("v"), vim.fn.line(".")
+    if s > e then s, e = e, s end
+    local loc = vim.fn.expand("%:.") .. ":" .. s .. "-" .. e
+    vim.fn.setreg("+", loc)
+    vim.notify(loc)
+    vim.api.nvim_feedkeys(vim.keycode("<Esc>"), "n", false)
+end)
 
 -- Windows
 vim.keymap.set("n", "ss", ":split<Return><C-w>w", { silent = true })

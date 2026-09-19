@@ -50,3 +50,18 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.wrap = true
     end
 })
+
+-- reload buffers changed on disk (e.g. by an agent in another tmux pane)
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "TermClose" }, {
+    callback = function()
+        if vim.fn.mode() ~= "c" then
+            vim.cmd.checktime()
+        end
+    end
+})
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    callback = function()
+        vim.notify("Buffer reloaded (changed on disk)", vim.log.levels.WARN)
+    end
+})
