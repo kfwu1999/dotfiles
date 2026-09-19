@@ -65,4 +65,23 @@ return {
             vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>", { silent = true })
         end,
     },
+    {
+        "sindrets/diffview.nvim",
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+        keys = {
+            {
+                "<leader>gd",
+                function()
+                    if require("diffview.lib").get_current_view() then
+                        vim.cmd.DiffviewClose()
+                    else
+                        vim.cmd.DiffviewOpen()
+                    end
+                end,
+                desc = "Toggle diffview (working tree)",
+            },
+            { "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", desc = "File history" },
+        },
+        opts = {},
+    },
 }
